@@ -24,7 +24,7 @@ class SignUpPage: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        print("hello signup")
+
     }
 
     override func didReceiveMemoryWarning() {
