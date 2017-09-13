@@ -1,0 +1,2 @@
+# Hotel
+Book a hotel
