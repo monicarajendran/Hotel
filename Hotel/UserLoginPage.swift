@@ -18,77 +18,94 @@ class UserLoginPage: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         userName.text = ""
         password.text = ""
-               self.navigationController?.setNavigationBarHidden(false, animated: true)
-
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
         self.navigationController?.navigationBar.topItem?.title = "USER LOGIN"
         self.navigationItem.setHidesBackButton(true, animated: true)
         
-}
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func alertMessage(_ alertDisplay: String){
+        
+        let alert = UIAlertController(title: "Alert", message: alertDisplay, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+
+    
     
     @IBAction func loginUserButton(_ sender: Any) {
         
-        if userName.text != "" && password.text != nil{
+        if userName.text != "" && password.text != ""{
             
             let userlogin = userName.text , passWordlogin = password.text
-          //  let passwordReset = UserDefaults.standard.object(forKey: "resetpassword")
             
-            guard let signUpUser =  UserDefaults.standard.dictionary(forKey: "user") , let usernameRegistered = signUpUser["userName"] , let passwordRegistered = signUpUser["password"] else {
-                return
-            }
+            guard let registeredUser =  UserDefaults.standard.array(forKey: "user")  as? [[String:String]] else{return}
             
-            if userlogin == usernameRegistered as? String && (passWordlogin == passwordRegistered as? String) /* ||  (passWordlogin == passwordReset as? String) */  {
+            var temp = registeredUser.count
             
+                for dictionaryOfEachUser in registeredUser{
+                    
+                    if (temp != 0) {
+                        
+                        
+                        
 
-            
-                //                let controllerId = "tableview"
-            //    let appdelegate = UIApplication.shared.delegate as? AppDelegate
-//                        let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//                        let initViewController : UIViewController = storyboard.instantiateViewController(withIdentifier: controllerId) as UIViewController
-//                        self.window?.rootViewController = initViewController
-//                        
-//
-            
-        
-                guard let vControllerFour = storyboard?.instantiateViewController(withIdentifier: "tabbar") else {return}
-                
-                navigationController?.pushViewController(vControllerFour, animated: true)
-            }
-            
-            
-            else{
-                    let alert = UIAlertController(title: "Alert", message: "YOU ARE NOT AN USER!  PLEASE SIGNUP!", preferredStyle: UIAlertControllerStyle.alert)
-                    let okayAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default , handler: nil)
-                alert.addAction(okayAction)
-                self.present(alert, animated: true, completion: nil)
-                
+                    if dictionaryOfEachUser["userName"] == userlogin {
+                        if dictionaryOfEachUser["password"] == passWordlogin{
+                            
+                            guard let vControllerFour = storyboard?.instantiateViewController(withIdentifier: "tabbar") else {return}
+                            
+                            navigationController?.pushViewController(vControllerFour, animated: true)
+                            
+                            break
+                            
+                        }else{
+                            alertMessage("INCORRECT PASSWORD!")                        }
+                        
+                    }
+                }
+                    temp = temp - 1
 
                     
-                }
-                
-        
-        }
-        
+                    if temp == 0 {
+                        alertMessage("YOU ARE NOT AN USER ! PLEASE LOGIN")
+                    }
+
                 
                 
             }
-        
+            
+                
+                
+            
         }
-        
-        
+    }
     
+    
+}
+
+
+
+
+
+
+
+
+
 
 
 

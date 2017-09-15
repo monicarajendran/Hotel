@@ -8,7 +8,12 @@
 
 import UIKit
 
+
 class SignUpPage: UIViewController {
+    var userDic = [String:String]()
+    
+    var arrayOfUsers = [[String:String]]()
+
     let defaults = UserDefaults.standard
 
     
@@ -65,20 +70,26 @@ class SignUpPage: UIViewController {
 
         if isEmailAddressValid
         {
-            var userDetails = [String:String]()
+         
+//            userDic.updateValue(user, forKey: "userName")
+//            userDic.updateValue(passWord, forKey: "password")
+//            userDic.updateValue(email, forKey: "emailId")
+            var arrayOfUsers : [[String:String]] = UserDefaults.standard.array(forKey: "user") as? [[String : String]] ?? [[:]]
+            userDic["userName"] = user
+            userDic["emailId"] = email
+            userDic["password"] = passWord
 
-           
-            userDetails["userName"] = user
-            userDetails["emailId"] = email
-            userDetails["password"] = passWord
-
-            defaults.set(userDetails, forKey: "user")
-            
+                arrayOfUsers.append(userDic)
+        defaults.set(arrayOfUsers, forKey: "user")
+        
             defaults.synchronize()
+            print(arrayOfUsers)
+
             
             
             let alert = UIAlertController(title: "Alert", message: "REGISTRATION IS SUCCESSFULL", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainPage") as? MainPage else{return}
+            
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in guard let _ = self.storyboard?.instantiateViewController(withIdentifier: "MainPage") as? MainPage else{return}
                 self.navigationController!.popViewController(animated: true)}))
             self.present(alert, animated: true, completion: nil)
             
@@ -89,6 +100,7 @@ class SignUpPage: UIViewController {
             
         } else{
             alertMessage("INVALID EMAIL ID")
+            
             }
         
         
