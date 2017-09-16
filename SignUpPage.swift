@@ -10,112 +10,83 @@ import UIKit
 
 
 class SignUpPage: UIViewController {
-    var userDic = [String:String]()
-    
-    var arrayOfUsers = [[String:String]]()
-
-    let defaults = UserDefaults.standard
-
     
     @IBOutlet weak var userName: UITextField!
     
-
+    
     @IBOutlet weak var emailId: UITextField!
     
     @IBOutlet weak var password: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    
+    func alertMessage(_ alertDisplay: String){
+        let alert = UIAlertController(title: "Alert", message: alertDisplay, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
         
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
     
+    func isValidEmailAddress(emailAddressString:String) -> Bool {
+        
+        let emailRegistered = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegistered)
+        
+        return emailTest.evaluate(with: emailAddressString)
+    }
     
     @IBAction func registerButton(_ sender: Any) {
+    
+        guard let user = userName.text , let passWord = password.text , let providedEmailAddress = emailId.text
+            else{return}
         
-        func alertMessage(_ alertDisplay: String){
-            let alert = UIAlertController(title: "Alert", message: alertDisplay, preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+        if user.isEmpty || passWord.isEmpty || providedEmailAddress.isEmpty {
             
-            
-        }
-
-        
-        guard let user = userName.text , let passWord = password.text , let email = emailId.text , let providedEmailAddress = emailId.text
- else{return}
-        if user.isEmpty || passWord.isEmpty || email.isEmpty {
             alertMessage("All fields are required")
             
-        }else{
+        }
+        
+        else{
             
-
-            func isValidEmailAddress(emailAddressString:String) -> Bool {
-                let emailRegistered = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+            if isValidEmailAddress(emailAddressString: providedEmailAddress)
+            {
+                let userDetails = [providedEmailAddress: ["userName": user,"password": passWord]]
                 
-                let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegistered)
-                return emailTest.evaluate(with: emailAddressString)
+                let registeredUser = UserDefaults.standard
+                
+                if let storedUsers = registeredUser.dictionary(forKey: "user") as? [String:[String:String]] {
+                    
+                    let multipleUserData = NSMutableDictionary(dictionary: storedUsers)
+                    
+                    multipleUserData[providedEmailAddress] = ["userName": user,"password":passWord]
+                    
+                    registeredUser.set(multipleUserData, forKey: "user")
+                    
+                } else {
+                    
+                    registeredUser.set(userDetails, forKey: "user")
+                    
+                }
+                registeredUser.synchronize()
+                
+                
+                print(UserDefaults.standard.dictionary(forKey: "user") as Any)
+                
+                let alert = UIAlertController(title: "Alert", message: "REGISTRATION IS SUCCESSFULL", preferredStyle: UIAlertControllerStyle.alert)
+                
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in guard let _ = self.storyboard?.instantiateViewController(withIdentifier: "MainPage") as? MainPage else{return}
+                    self.navigationController?.popViewController(animated: true)}))
+                
+                self.present(alert, animated: true, completion: nil)
+
             }
-        
-        
-        let isEmailAddressValid = isValidEmailAddress(emailAddressString: providedEmailAddress)
-
-        if isEmailAddressValid
-        {
-         
-//            userDic.updateValue(user, forKey: "userName")
-//            userDic.updateValue(passWord, forKey: "password")
-//            userDic.updateValue(email, forKey: "emailId")
-            var arrayOfUsers : [[String:String]] = UserDefaults.standard.array(forKey: "user") as? [[String : String]] ?? [[:]]
-            userDic["userName"] = user
-            userDic["emailId"] = email
-            userDic["password"] = passWord
-
-                arrayOfUsers.append(userDic)
-        defaults.set(arrayOfUsers, forKey: "user")
-        
-            defaults.synchronize()
-            print(arrayOfUsers)
-
-            
-            
-            let alert = UIAlertController(title: "Alert", message: "REGISTRATION IS SUCCESSFULL", preferredStyle: UIAlertControllerStyle.alert)
-            
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in guard let _ = self.storyboard?.instantiateViewController(withIdentifier: "MainPage") as? MainPage else{return}
-                self.navigationController!.popViewController(animated: true)}))
-            self.present(alert, animated: true, completion: nil)
-            
-
-            
-
-            
-            
-        } else{
-            alertMessage("INVALID EMAIL ID")
-            
+            else{
+                
+                alertMessage("INVALID EMAIL ID")
             }
-        
-        
-        
+        }
     }
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

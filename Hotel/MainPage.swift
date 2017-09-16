@@ -9,17 +9,22 @@
 import UIKit
 
 class MainPage: UIViewController {
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+
+//    override func viewWillAppear(_ animated: Bool) {
+//    
+//        self.navigationController?.navigationBar.topItem?.title = "Main Page"
+//        self.navigationItem.setHidesBackButton(true, animated: true)
+//    }
+    
+    override func viewDidLoad() {
+        self.navigationItem.title = "Login page"
+        self.navigationItem.setHidesBackButton(true, animated: false)
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        self.navigationController?.setNavigationBarHidden(false, animated: true)
-//    }
-
+    
         @IBAction func adminButton(_ sender: Any) {
     
-        guard let vControllerTwo = self.storyboard?.instantiateViewController(withIdentifier: "ViewControllerTwo")
+        guard let vControllerTwo = self.storyboard?.instantiateViewController(withIdentifier: "adminLogin")
             as? AdminPage else {return}
         
         self.navigationController?.pushViewController(vControllerTwo, animated: true)
@@ -39,7 +44,7 @@ class MainPage: UIViewController {
         guard let ControllerTwo = self.storyboard?.instantiateViewController(withIdentifier: "UserLogin")
             as? UserLoginPage else {return}
         
-        self.navigationController?.pushViewController(ControllerTwo, animated: true)
+        self.navigationController?.pushViewController(ControllerTwo, animated: false)
         
 
         

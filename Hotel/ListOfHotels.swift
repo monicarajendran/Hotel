@@ -10,26 +10,26 @@ import UIKit
 
 class ListOfHotels: UITableViewController {
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.topItem?.title = "HOTELS"
-
-    }
-    
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+            }
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-
-    override func didReceiveMemoryWarning() {
+        override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+   
+    
+    func addTapped(sender: UIBarButtonItem){
+        
+        guard let addHotel = self.storyboard?.instantiateViewController(withIdentifier: "ViewControllerFive") else {return}
+        
+        self.navigationController?.present(addHotel, animated: true, completion: nil)
+        
+        
     }
 
     // MARK: - Table view data source
@@ -43,7 +43,19 @@ class ListOfHotels: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 0
     }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        self.navigationController?.navigationBar.topItem?.title = "LIST OF HOTELS"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped(sender:)))
 
+
+    }
+
+    
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

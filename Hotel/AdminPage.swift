@@ -14,28 +14,19 @@ class AdminPage: UIViewController {
     
     @IBOutlet weak var password: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        
-        // Do any additional setup after loading the view.
-    }
     override func viewWillAppear(_ animated: Bool) {
         userName.text = ""
         password.text = ""
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func loginButton(_ sender: Any) {
-        let passworD = password.text
+        self.title = "Admin Page"
         
-        if userName.text == "moni" && !(passworD?.isEmpty)!{
-            guard let vControllerThree = self.storyboard?.instantiateViewController(withIdentifier: "tableview") else {return}
-            //vControllerThree.myString = ("WELCOME \(userName.text!)")
-            self.navigationController?.pushViewController(vControllerThree, animated:  true)
+        
+    }
+    @IBAction func loginButton(_ sender: Any) {
+        
+        if userName.text == "moni" && password.text == "moni"{
+            guard let homeTab = self.storyboard?.instantiateViewController(withIdentifier: "tableview") else {return}
+            
+            self.navigationController?.pushViewController(homeTab, animated: false)
             
             
         }
@@ -45,24 +36,6 @@ class AdminPage: UIViewController {
             
             navigationController?.pushViewController(vControllerThree, animated: true)
             
-
         }
-        
-        
-        
-        
-        
-        
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

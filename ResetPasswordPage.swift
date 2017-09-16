@@ -12,9 +12,9 @@ class ResetPasswordPage: UIViewController {
     
     @IBOutlet weak var oldPassword: UITextField!
     
-    @IBOutlet weak var newPassword1: UITextField!
+    @IBOutlet weak var newPassword: UITextField!
     
-    @IBOutlet weak var newPassword2: UITextField!
+    @IBOutlet weak var confirmPassword: UITextField!
     
     func alertMessage(_ alertDisplay: String){
         
@@ -25,26 +25,65 @@ class ResetPasswordPage: UIViewController {
     }
     
     @IBAction func resetButton(_ sender: Any) {
-        if newPassword1.text == newPassword2.text {
-            alertMessage("PASSWORD IS RESET")
-            let defaultUser = UserDefaults.standard
-            if  var resetPassword = UserDefaults.standard.dictionary(forKey: "user") {
-
-            print(resetPassword)
+        
+        
+        if newPassword.text == confirmPassword.text {
             
-            let passwordChanged = newPassword2.text
-                
-            resetPassword.updateValue(passwordChanged!, forKey: "password")
-               defaultUser.set(resetPassword, forKey: "user")
-                
-            print(resetPassword)
-            defaultUser.synchronize()
-        }
-        }
-        else{
-            alertMessage("PASSWORD MISMATCHED")
-        }
+            alertMessage("PASSWORD IS RESET")
+            
 
+            var userDetails = UserDefaults.standard.dictionary(forKey: "user") as? [String:[String:String]]
+            var userEmail = UserDefaults.standard.string(forKey: "loggedInUserEmail")
+            userDetails?[userEmail!]?["password"] = confirmPassword.text
+            UserDefaults.standard.set(userDetails, forKey: "user")
+            UserDefaults.standard.synchronize()
+                      
+            
+        }
+            else{
+                alertMessage("PASSWORD MISMATCHED")
+            }
+
+            
+            
+//            UserDefaults.standard.dictionary(forKey: "")
+//            registeredUser[]?["password"]
+//            let serachForUser = UserDefaults.standard.string(forKey: "loggedInUser")
+// guard let registeredUser =  UserDefaults.standard.array(forKey: "user")  as? [[String:String]] else{return}
+//            var registeredUser =  UserDefaults.standard.array(forKey: "user")  as! [[String:String]]
+//            for updatePassword in registeredUser {
+//                
+//                if updatePassword["userName"] == serachForUser {
+//                    var resetPasswordUpdate = updatePassword
+//                    resetPasswordUpdate["password"] = confirmPassword.text
+//                    print(resetPasswordUpdate)
+//                    break
+//                    
+                    //updatePassword["password"] = newPassword2.text
+                    
+            
+                
+        
+            
+            
+
+            
+//            let defaultUser = UserDefaults.standard
+//            if  var resetPassword = UserDefaults.standard.dictionary(forKey: "userUpdate") {
+//
+//            print(resetPassword)
+//            
+//            let passwordChanged = newPassword2.text
+//                
+//            resetPassword.updateValue(passwordChanged!, forKey: "password")
+//               defaultUser.set(resetPassword, forKey: "userUpdate")
+//                
+//            print(resetPassword)
+//            defaultUser.synchronize()
+//        }
+        
+        
+        
     }
     
 
