@@ -22,11 +22,12 @@ class AdminPage: UIViewController {
         
     }
     @IBAction func loginButton(_ sender: Any) {
-        
-        if userName.text == "moni" && password.text == "moni"{
-            guard let homeTab = self.storyboard?.instantiateViewController(withIdentifier: "tableview") else {return}
-            
+        let admin = "moni"
+        if userName.text == admin && password.text == "moni"{
+            guard let homeTab = self.storyboard?.instantiateViewController(withIdentifier: "tabbar") as? TabBarController else {return}
+            homeTab.loginUser = admin
             self.navigationController?.pushViewController(homeTab, animated: false)
+            
             
             
         }

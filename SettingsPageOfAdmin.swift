@@ -50,7 +50,6 @@ class SettingsPageOfAdmin: UITableViewController {
             
             UserDefaults.standard.removeObject(forKey: "loggedInUserEmail")
             UserDefaults.standard.removeObject(forKey: "loggedInUserName")
-           // UserDefaults.standard.removeObject(forKey: "loggedInpassword")
             
             let alert = UIAlertController(title: "Logout", message: "Are You Sure", preferredStyle: UIAlertControllerStyle.alert)
             

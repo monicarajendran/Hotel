@@ -21,8 +21,11 @@ class SignUpPage: UIViewController {
     
     
     func alertMessage(_ alertDisplay: String){
+        
         let alert = UIAlertController(title: "Alert", message: alertDisplay, preferredStyle: UIAlertControllerStyle.alert)
+        
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        
         self.present(alert, animated: true, completion: nil)
         
         
@@ -55,22 +58,22 @@ class SignUpPage: UIViewController {
             {
                 let userDetails = [providedEmailAddress: ["userName": user,"password": passWord]]
                 
-                let registeredUser = UserDefaults.standard
+                let customerSignUpRecord = UserDefaults.standard
                 
-                if let storedUsers = registeredUser.dictionary(forKey: "user") as? [String:[String:String]] {
+                if let storedUsers = customerSignUpRecord.dictionary(forKey: "user") as? [String:[String:String]] {
                     
                     let multipleUserData = NSMutableDictionary(dictionary: storedUsers)
                     
                     multipleUserData[providedEmailAddress] = ["userName": user,"password":passWord]
                     
-                    registeredUser.set(multipleUserData, forKey: "user")
+                    customerSignUpRecord.set(multipleUserData, forKey: "user")
                     
                 } else {
                     
-                    registeredUser.set(userDetails, forKey: "user")
+                    customerSignUpRecord.set(userDetails, forKey: "user")
                     
                 }
-                registeredUser.synchronize()
+                customerSignUpRecord.synchronize()
                 
                 
                 print(UserDefaults.standard.dictionary(forKey: "user") as Any)
@@ -78,6 +81,7 @@ class SignUpPage: UIViewController {
                 let alert = UIAlertController(title: "Alert", message: "REGISTRATION IS SUCCESSFULL", preferredStyle: UIAlertControllerStyle.alert)
                 
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: {(action) in guard let _ = self.storyboard?.instantiateViewController(withIdentifier: "MainPage") as? MainPage else{return}
+                    
                     self.navigationController?.popViewController(animated: true)}))
                 
                 self.present(alert, animated: true, completion: nil)

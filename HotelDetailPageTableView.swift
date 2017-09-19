@@ -1,70 +1,55 @@
 //
-//  ListOfHotels.swift
+//  HotelDetailPageTableView.swift
 //  Hotel
 //
-//  Created by user on 21/06/1939 Saka.
+//  Created by user on 26/06/1939 Saka.
 //  Copyright © 1939 Saka user. All rights reserved.
 //
 
 import UIKit
 
-class ListOfHotels: UITableViewController {
-    
+class HotelDetailPageTableView: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        var hotelNameInitially = "THE PARK"
         
+       
+    }
 
-            }
-
-        override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-   
-    
-    func addTapped(sender: UIBarButtonItem){
-        
-        guard let addHotel = self.storyboard?.instantiateViewController(withIdentifier: "ViewControllerFive") else {return}
-        
-        self.navigationController?.present(addHotel, animated: true, completion: nil)
-        
-        
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-    
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        self.navigationItem.setHidesBackButton(true, animated: false)
-        self.navigationController?.navigationBar.topItem?.title = "LIST OF HOTELS"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped(sender:)))
-
-
+        return 5
     }
 
     
-    
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath ) as! HotelDetailPageCell
 
+        let row = indexPath.row
+        
+        cell.hotelTitleAsName.text = "The Park"
+        cell.hotellLocationAsDescription.text = "Velachery"
+        
+        
+        
         // Configure the cell...
-
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
