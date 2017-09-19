@@ -26,6 +26,7 @@ class HotelDetailFillUpPage: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
         contactNumber.delegate = self
         discountPercent.delegate = self
+        
     }
     
     
@@ -39,31 +40,59 @@ class HotelDetailFillUpPage: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func addHotelToTheList(_ sender: Any) {
-        let name = hotelName.text
-        let hotelAddedRecord = UserDefaults.standard
-
-        var initialRecordOfHotels = [String:[String]]()
-        if let initialRecordOfHotels = (hotelAddedRecord.dictionary(forKey: "hotel") as? [String:[String]]) {
+        guard let name = hotelName.text , name != "" else { return }
         
-        let hotelNameAsKey  = NSMutableDictionary(dictionary: initialRecordOfHotels)
+        let arrayOfhotels = [name]
         
-        hotelNameAsKey[name!] = [hotelName.text!,discountPercent.text!,location.text!,address.text!,contactNumber.text!]
+        let defaults = UserDefaults.standard
         
-        
-        hotelAddedRecord.set(hotelNameAsKey, forKey: "hotel")
-        
-        hotelAddedRecord.set(name, forKey: "hotelName")
-        
-        hotelAddedRecord.synchronize()
-        
-        print(hotelNameAsKey)
+        if var arrayOfhotels = defaults.array(forKey: "hotels") as? [String]  {
             
-        }else {
-            initialRecordOfHotels = ["":[""]]
-            hotelAddedRecord.set(initialRecordOfHotels, forKey: "hotel")
-            hotelAddedRecord.synchronize()
+            arrayOfhotels.append(name)
+            defaults.set(arrayOfhotels, forKey: "hotels")
+
             
         }
+        else {
+            defaults.set(arrayOfhotels, forKey: "hotels")
+        }
+        
+        defaults.synchronize()
+
+        
+        print(arrayOfhotels)
+        
+        
+        
+        
+        
+        
+        
+//        let name = hotelName.text
+//        let hotelAddedRecord = UserDefaults.standard
+//
+//        let initialRecordOfHotels = [hotelName.text!,discountPercent.text!,location.text!,address.text!,contactNumber.text!]
+//        if let initialRecordOfHotels = (hotelAddedRecord.dictionary(forKey: "hotel") as? [String:[String]]) {
+//        
+//        let hotelNameAsKey  = NSMutableDictionary(dictionary: initialRecordOfHotels)
+//        
+//        hotelNameAsKey[name!] = [hotelName.text!,discountPercent.text!,location.text!,address.text!,contactNumber.text!]
+//        
+//        
+//        hotelAddedRecord.set(hotelNameAsKey, forKey: "hotel")
+//        
+//        hotelAddedRecord.set(name, forKey: "hotelName")
+//        
+//        hotelAddedRecord.synchronize()
+//        
+//        print(hotelNameAsKey)
+//            
+//        }else {
+//            
+//            hotelAddedRecord.set(initialRecordOfHotels, forKey: "hotel")
+//            hotelAddedRecord.synchronize()
+//            
+//        }
         
     }
     

@@ -10,15 +10,12 @@ import UIKit
 
 class ListOfHotelsTableView: UITableViewController {
     
-    let newHotel = UserDefaults.standard.dictionary(forKey: "hotel") as? [String:[String]]
+    //let newHotel = UserDefaults.standard.dictionary(forKey: "hotel") as? [String:[String]]
     
-    var arrayOfHotel = [String]()
+    let hotelNames = UserDefaults.standard.array(forKey: "hotels") as? [String]
     
-    var arrayOfHotelLocation = [String]()
-    
-    override func viewDidLoad() {
+        override func viewDidLoad() {
         super.viewDidLoad()
-        print(newHotel?.count)
     }
     
     
@@ -30,10 +27,12 @@ class ListOfHotelsTableView: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if (newHotel == nil) {
+       // return (hotelNames?.count)!
+        
+        if (hotelNames == nil) {
             return 0
         }else{
-            return (newHotel?.count)!
+            return (hotelNames?.count)!
         }
     }
     
@@ -44,28 +43,32 @@ class ListOfHotelsTableView: UITableViewController {
         
         self.navigationController?.navigationBar.topItem?.title = "HOTELS"
         
-        
-        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "HotelDetailPageCell", for: indexPath)
         
-        let newHotelName = UserDefaults.standard.string(forKey: "hotelName")
+         let row = indexPath
         
-        let row = indexPath
-        if indexPath.row != nil {
-            
-            if indexPath.row == (newHotel?.count)! - 1 {
-            
-                cell.textLabel?.text = newHotel?[newHotelName!]?[0]
-                
-                cell.detailTextLabel?.text = newHotel?[newHotelName!]?[2]
-                
-           }
-        }
+        cell.textLabel?.text = hotelNames?[indexPath.row]
         
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "HotelDetailPageCell", for: indexPath)
+//        
+//        let newHotelName = UserDefaults.standard.string(forKey: "hotelName")
+//        
+//        if indexPath.row != nil {
+//            
+//            if indexPath.row == (newHotel?.count)! - 1 {
+//                var allValues = Array(newHotel!.keys)
+//                cell.textLabel?.text = allValues[indexPath.row]  
+//               // cell.textLabel?.text = newHotel?[newHotelName!]?[0]
+//                
+//                cell.detailTextLabel?.text = newHotel?[newHotelName!]?[2]
+//                
+//           }
+//        }
+//        
         return cell
     }
     
