@@ -12,40 +12,43 @@ class ResetPasswordPage: UIViewController {
     
     @IBOutlet weak var oldPassword: UITextField!
     
-    @IBOutlet weak var newPassword1: UITextField!
+    @IBOutlet weak var newPassword: UITextField!
     
-    @IBOutlet weak var newPassword2: UITextField!
+    @IBOutlet weak var confirmPassword: UITextField!
     
     func alertMessage(_ alertDisplay: String){
         
         let alert = UIAlertController(title: "Alert", message: alertDisplay, preferredStyle: UIAlertControllerStyle.alert)
+        
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        
         self.present(alert, animated: true, completion: nil)
         
     }
     
     @IBAction func resetButton(_ sender: Any) {
-        if newPassword1.text == newPassword2.text {
-            alertMessage("PASSWORD IS RESET")
-            let defaultUser = UserDefaults.standard
-            if  var resetPassword = UserDefaults.standard.dictionary(forKey: "user") {
-
-            print(resetPassword)
+        
+        
+        if newPassword.text == confirmPassword.text {
             
-            let passwordChanged = newPassword2.text
-                
-            resetPassword.updateValue(passwordChanged!, forKey: "password")
-               defaultUser.set(resetPassword, forKey: "user")
-                
-            print(resetPassword)
-            defaultUser.synchronize()
-        }
+            alertMessage("PASSWORD IS RESET")
+            
+            var userDetails = UserDefaults.standard.dictionary(forKey: "user") as? [String:[String:String]]
+            
+            var userEmail = UserDefaults.standard.string(forKey: "loggedInUserEmail")
+            
+            userDetails?[userEmail!]?["password"] = confirmPassword.text
+            
+            UserDefaults.standard.set(userDetails, forKey: "user")
+            
+            UserDefaults.standard.synchronize()
+            
+            
         }
         else{
+            
             alertMessage("PASSWORD MISMATCHED")
         }
-
     }
     
-
 }

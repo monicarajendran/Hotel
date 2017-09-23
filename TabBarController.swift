@@ -9,19 +9,40 @@
 import UIKit
 
 class TabBarController: UITabBarController {
+
+    var loginUser = String()
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.setHidesBackButton(true, animated: true)
+    func addHotelButton(sender: UIBarButtonItem){
+        
+        guard let addHotel = self.storyboard?.instantiateViewController(withIdentifier: "HotelDetailFillUpPage") else {return}
+        
+        
+        self.navigationController?.present(addHotel, animated: true, completion: nil)
+        
         
     }
+    
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+            self.navigationItem.setHidesBackButton(true, animated: true)
+        if loginUser == "moni"  {
+            
+            
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addHotelButton(sender:)))
+            
+        }
+        else{
 
-        // Do any additional setup after loading the view.
+        }
+
+
     }
 
-    override func didReceiveMemoryWarning() {
+
+       override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }

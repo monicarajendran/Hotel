@@ -10,12 +10,21 @@ import UIKit
 
 class NavigationController: UINavigationController {
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        self.navigationController?.setNavigationBarHidden(true, animated: true)
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let userNameUnwrapped = UserDefaults.standard.string(forKey: "loggedInUserName") , !userNameUnwrapped.isEmpty else {return}
+        
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let secondViewController = mainStoryboard.instantiateViewController(withIdentifier:"tabbar") as! TabBarController
+        let nav = UINavigationController(rootViewController: secondViewController)
+        appdelegate.window!.rootViewController = nav
+        
 
         // Do any additional setup after loading the view.
     }

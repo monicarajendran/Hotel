@@ -14,55 +14,35 @@ class AdminPage: UIViewController {
     
     @IBOutlet weak var password: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        
-        // Do any additional setup after loading the view.
-    }
     override func viewWillAppear(_ animated: Bool) {
-        userName.text = ""
-        password.text = ""
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        userName.text = "" ; password.text = ""
+        
+        self.title = "Admin Page"
+        
     }
     
     @IBAction func loginButton(_ sender: Any) {
-        let passworD = password.text
         
-        if userName.text == "moni" && !(passworD?.isEmpty)!{
-            guard let vControllerThree = self.storyboard?.instantiateViewController(withIdentifier: "tableview") else {return}
-            //vControllerThree.myString = ("WELCOME \(userName.text!)")
-            self.navigationController?.pushViewController(vControllerThree, animated:  true)
+        let admin = "moni"
+        
+        if userName.text == admin && password.text == "moni"{
             
+            guard let homeTab = self.storyboard?.instantiateViewController(withIdentifier: "tabbar") as? TabBarController else {return}
+            
+            homeTab.loginUser = admin
+            
+            self.navigationController?.pushViewController(homeTab, animated: false)
             
         }
         else{
             
-            guard let vControllerThree = storyboard?.instantiateViewController(withIdentifier: "ViewControllerThree")  else {return}
+            let alert = UIAlertController(title: "Alert", message: "SORRY YOU ARE NOT AN ADMIN!", preferredStyle: UIAlertControllerStyle.alert)
             
-            navigationController?.pushViewController(vControllerThree, animated: true)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             
+            self.present(alert, animated: true, completion: nil)
 
         }
-        
-        
-        
-        
-        
-        
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
