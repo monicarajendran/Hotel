@@ -14,14 +14,5 @@ class ListOfHotelsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var locationAsSubtittleOfTheCell: UILabel!
    
-
-    func viewDidLoad(){
-        
-        hotelTittleOfTheCell.text = UserDefaults.standard.string(forKey: "some")
-    }
-    
-    
-  
-
 }
 

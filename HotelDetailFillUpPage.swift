@@ -23,13 +23,14 @@ class HotelDetailFillUpPage: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var contactNumber: UITextField!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         contactNumber.delegate = self
         discountPercent.delegate = self
         
     }
-    
-    
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
         let allowedCharacters = CharacterSet.decimalDigits
@@ -40,72 +41,74 @@ class HotelDetailFillUpPage: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func addHotelToTheList(_ sender: Any) {
-        guard let name = hotelName.text , name != "" else { return }
         
-        let arrayOfhotels = [name]
+        let newHotel = Hotel(hotelName: hotelName.text!, discountPercent: discountPercent.text!,locationOfTheHotel: location.text!, addressOfTheHotel: address.text!, contactNumber: contactNumber.text!)
+        
+        var ArrayOfHotelObjects = [Hotel]()
         
         let defaults = UserDefaults.standard
         
-        if var arrayOfhotels = defaults.array(forKey: "hotels") as? [String]  {
+        if let encodeData = defaults.data(forKey: "HOTEL") as? NSData {
             
-            arrayOfhotels.append(name)
-            defaults.set(arrayOfhotels, forKey: "hotels")
+            ArrayOfHotelObjects.append(newHotel)
+            
+            print(ArrayOfHotelObjects)
+            
+        let encode = NSKeyedArchiver.archivedData(withRootObject: ArrayOfHotelObjects)
+            
+        defaults.set(encode, forKey: "HOTEL")
+            
+            defaults.synchronize()
+    
+        }
+        
+        else{
+            
+            let encodedData = NSKeyedArchiver.archivedData(withRootObject: newHotel)
+            
+            defaults.set(encodedData, forKey: "HOTEL")
 
+            defaults.synchronize()
+
+        }
+        
+        if let decodedData = UserDefaults.standard.data(forKey: "HOTEL") as? NSData {
+            
+            let decode = NSKeyedUnarchiver.unarchiveObject(with: decodedData as Data)
             
         }
-        else {
-            defaults.set(arrayOfhotels, forKey: "hotels")
-        }
-        
-        defaults.synchronize()
 
-        
-        print(arrayOfhotels)
-        
-        
-        
-        
-        
-        
-        
-//        let name = hotelName.text
-//        let hotelAddedRecord = UserDefaults.standard
-//
-//        let initialRecordOfHotels = [hotelName.text!,discountPercent.text!,location.text!,address.text!,contactNumber.text!]
-//        if let initialRecordOfHotels = (hotelAddedRecord.dictionary(forKey: "hotel") as? [String:[String]]) {
+//        guard let name = hotelName.text , name != "" else { return }
 //        
-//        let hotelNameAsKey  = NSMutableDictionary(dictionary: initialRecordOfHotels)
+//        let arrayOfhotels = [name]
 //        
-//        hotelNameAsKey[name!] = [hotelName.text!,discountPercent.text!,location.text!,address.text!,contactNumber.text!]
+//        let defaults = UserDefaults.standard
 //        
 //        
-//        hotelAddedRecord.set(hotelNameAsKey, forKey: "hotel")
-//        
-//        hotelAddedRecord.set(name, forKey: "hotelName")
-//        
-//        hotelAddedRecord.synchronize()
-//        
-//        print(hotelNameAsKey)
+//        if var arrayOfhotels = defaults.array(forKey: "hotels") as? [String]  {
 //            
-//        }else {
+//            arrayOfhotels.append(name)
 //            
-//            hotelAddedRecord.set(initialRecordOfHotels, forKey: "hotel")
-//            hotelAddedRecord.synchronize()
+//            defaults.set(arrayOfhotels, forKey: "hotels")
 //            
 //        }
-        
+//            
+//        else {
+//            
+//            defaults.set(arrayOfhotels, forKey: "hotels")
+//        }
+//        
+//        defaults.synchronize()
+//
+//        print(arrayOfhotels)
+//        
     }
-    
     
     @IBAction func backButton(_ sender: Any) {
         
         dismiss(animated: true, completion: nil)
         
     }
-    
-    
-    
-    
-    
+
 }
 

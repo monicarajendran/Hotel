@@ -33,7 +33,6 @@ class ResetPasswordPage: UIViewController {
             
             alertMessage("PASSWORD IS RESET")
             
-
             var userDetails = UserDefaults.standard.dictionary(forKey: "user") as? [String:[String:String]]
             
             var userEmail = UserDefaults.standard.string(forKey: "loggedInUserEmail")
@@ -43,18 +42,13 @@ class ResetPasswordPage: UIViewController {
             UserDefaults.standard.set(userDetails, forKey: "user")
             
             UserDefaults.standard.synchronize()
-                      
+            
             
         }
-            else{
-                alertMessage("PASSWORD MISMATCHED")
-            }
-
+        else{
             
-            
-        
-        
+            alertMessage("PASSWORD MISMATCHED")
+        }
     }
     
-
 }

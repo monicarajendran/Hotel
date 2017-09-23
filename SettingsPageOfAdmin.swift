@@ -24,18 +24,16 @@ class SettingsPageOfAdmin: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        userName.text = UserDefaults.standard.string(forKey: "loggedInUserName")
+       userName.text = UserDefaults.standard.string(forKey: "loggedInUserName")
         
         emailIdOfTheUser.text = UserDefaults.standard.string(forKey: "loggedInUserEmail")
-       
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         self.navigationController?.navigationBar.topItem?.title = "SETTINGS"
-
+        
     }
-    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 2 {
@@ -49,6 +47,7 @@ class SettingsPageOfAdmin: UITableViewController {
         if indexPath.row == 3 {
             
             UserDefaults.standard.removeObject(forKey: "loggedInUserEmail")
+            
             UserDefaults.standard.removeObject(forKey: "loggedInUserName")
             
             let alert = UIAlertController(title: "Logout", message: "Are You Sure", preferredStyle: UIAlertControllerStyle.alert)
@@ -58,15 +57,10 @@ class SettingsPageOfAdmin: UITableViewController {
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action) in guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "MainPage") as? MainPage else { return }
                 self.navigationController!.pushViewController(vc, animated: true)}))
             
-            
             self.present(alert, animated: true, completion: nil)
-            
             
         }
     }
-    
-    
-    
     
 }
 

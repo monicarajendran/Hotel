@@ -27,7 +27,7 @@ class MainPage: UIViewController {
         guard let vControllerTwo = self.storyboard?.instantiateViewController(withIdentifier: "adminLogin")
             as? AdminPage else {return}
         
-        self.navigationController?.pushViewController(vControllerTwo, animated: true)
+            self.navigationController?.pushViewController(vControllerTwo, animated: false)
     }
     
     

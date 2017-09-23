@@ -10,30 +10,13 @@ import UIKit
 
 class ListOfHotelsTableView: UITableViewController {
     
-    //let newHotel = UserDefaults.standard.dictionary(forKey: "hotel") as? [String:[String]]
+    var hotelNames = UserDefaults.standard.data(forKey: "HOTEL")! as Data
     
-    let hotelNames = UserDefaults.standard.array(forKey: "hotels") as? [String]
+   // let s = NSKeyedUnarchiver.unarchiveObject(with: hotelNames)
     
-        override func viewDidLoad() {
+    override func viewDidLoad() {
+        
         super.viewDidLoad()
-    }
-    
-    
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-       // return (hotelNames?.count)!
-        
-        if (hotelNames == nil) {
-            return 0
-        }else{
-            return (hotelNames?.count)!
-        }
     }
     
     
@@ -43,34 +26,42 @@ class ListOfHotelsTableView: UITableViewController {
         
         self.navigationController?.navigationBar.topItem?.title = "HOTELS"
         
+        
+       // hotelNames = UserDefaults.standard.data(forKey: "HOTEL")!
+        
+        self.tableView.reloadData()
+        
+       print(UserDefaults.standard.data(forKey: "HOTEL"))
+        
+    }
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if (hotelNames == nil) {
+            
+            return 0
+        }
+        
+        else{
+            
+            return (hotelNames.count)
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "HotelDetailPageCell", for: indexPath)
         
-         let row = indexPath
+        cell.textLabel?.text = "hi"
         
-        cell.textLabel?.text = hotelNames?[indexPath.row]
-        
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "HotelDetailPageCell", for: indexPath)
-//        
-//        let newHotelName = UserDefaults.standard.string(forKey: "hotelName")
-//        
-//        if indexPath.row != nil {
-//            
-//            if indexPath.row == (newHotel?.count)! - 1 {
-//                var allValues = Array(newHotel!.keys)
-//                cell.textLabel?.text = allValues[indexPath.row]  
-//               // cell.textLabel?.text = newHotel?[newHotelName!]?[0]
-//                
-//                cell.detailTextLabel?.text = newHotel?[newHotelName!]?[2]
-//                
-//           }
-//        }
-//        
         return cell
-    }
+
+        }
     
     
     /*
