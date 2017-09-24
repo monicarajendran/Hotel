@@ -10,9 +10,24 @@ import UIKit
 
 class ListOfHotelsTableView: UITableViewController {
     
-    var hotelNames = UserDefaults.standard.data(forKey: "HOTEL")! as Data
+    func arrayOfHotelObjects() -> [Hotel] {
+        
+        if let hotelNames = UserDefaults.standard.data(forKey: "HOTEL") as? NSData {
+            
+        let arrayOfHotel = NSKeyedUnarchiver.unarchiveObject(with: hotelNames as Data) as? [Hotel]
     
-   // let s = NSKeyedUnarchiver.unarchiveObject(with: hotelNames)
+        return arrayOfHotel!
+            
+        }
+        else {
+            
+            let some : [AnyObject] = []
+            return some as! [Hotel]
+        }
+
+        
+        
+    }
     
     override func viewDidLoad() {
         
@@ -25,9 +40,6 @@ class ListOfHotelsTableView: UITableViewController {
         self.navigationItem.setHidesBackButton(true, animated: false)
         
         self.navigationController?.navigationBar.topItem?.title = "HOTELS"
-        
-        
-       // hotelNames = UserDefaults.standard.data(forKey: "HOTEL")!
         
         self.tableView.reloadData()
         
@@ -42,14 +54,14 @@ class ListOfHotelsTableView: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if (hotelNames == nil) {
+        if (arrayOfHotelObjects().count == nil) {
             
             return 0
         }
         
         else{
             
-            return (hotelNames.count)
+            return (arrayOfHotelObjects().count)
         }
     }
     
@@ -57,7 +69,9 @@ class ListOfHotelsTableView: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "HotelDetailPageCell", for: indexPath)
         
-        cell.textLabel?.text = "hi"
+        cell.textLabel?.text = arrayOfHotelObjects()[indexPath.row].hotelName
+        
+        cell.detailTextLabel?.text = arrayOfHotelObjects()[indexPath.row].locationOfTheHotel
         
         return cell
 

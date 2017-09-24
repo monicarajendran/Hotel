@@ -14,7 +14,6 @@
 		CE5723C41F67BB5300772948 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5723C31F67BB5300772948 /* NavigationController.swift */; };
 		CE5723C61F67BF2500772948 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5723C51F67BF2500772948 /* TabBarController.swift */; };
 		CE5723C81F67C53900772948 /* ListOfHotelsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5723C71F67C53900772948 /* ListOfHotelsTableView.swift */; };
-		CE5910371F6E57AB0052A3CE /* ListOfHotelsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5910361F6E57AB0052A3CE /* ListOfHotelsTableViewCell.swift */; };
 		CE62138B1F5FDABB00D21246 /* HotelDetailFillUpPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE62138A1F5FDABB00D21246 /* HotelDetailFillUpPage.swift */; };
 		CE9F278F1F5EDFE2003146E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F278E1F5EDFE2003146E5 /* AppDelegate.swift */; };
 		CE9F27911F5EDFE2003146E5 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9F27901F5EDFE2003146E5 /* MainPage.swift */; };
@@ -44,7 +43,6 @@
 		CE5723C31F67BB5300772948 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		CE5723C51F67BF2500772948 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CE5723C71F67C53900772948 /* ListOfHotelsTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListOfHotelsTableView.swift; sourceTree = "<group>"; };
-		CE5910361F6E57AB0052A3CE /* ListOfHotelsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ListOfHotelsTableViewCell.swift; path = ../ListOfHotelsTableViewCell.swift; sourceTree = "<group>"; };
 		CE62138A1F5FDABB00D21246 /* HotelDetailFillUpPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelDetailFillUpPage.swift; sourceTree = SOURCE_ROOT; };
 		CE9F278B1F5EDFE2003146E5 /* Hotel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hotel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE9F278E1F5EDFE2003146E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 				CE3C44F61F62C39700902C88 /* SignUpPage.swift */,
 				CE62138A1F5FDABB00D21246 /* HotelDetailFillUpPage.swift */,
 				CE5723C71F67C53900772948 /* ListOfHotelsTableView.swift */,
-				CE5910361F6E57AB0052A3CE /* ListOfHotelsTableViewCell.swift */,
 				CE5723C11F67A5EA00772948 /* SettingsPageOfAdmin.swift */,
 				CEC05EA01F66499E00E446DA /* ResetPasswordPage.swift */,
 				CE9F27921F5EDFE2003146E5 /* Main.storyboard */,
@@ -235,7 +232,6 @@
 				CE5723C21F67A5EA00772948 /* SettingsPageOfAdmin.swift in Sources */,
 				CE5723C81F67C53900772948 /* ListOfHotelsTableView.swift in Sources */,
 				CE3C44F71F62C39700902C88 /* SignUpPage.swift in Sources */,
-				CE5910371F6E57AB0052A3CE /* ListOfHotelsTableViewCell.swift in Sources */,
 				CE5723C61F67BF2500772948 /* TabBarController.swift in Sources */,
 				CE9F27911F5EDFE2003146E5 /* MainPage.swift in Sources */,
 				CE9F278F1F5EDFE2003146E5 /* AppDelegate.swift in Sources */,

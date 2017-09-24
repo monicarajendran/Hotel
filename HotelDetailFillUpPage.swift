@@ -30,7 +30,7 @@ class HotelDetailFillUpPage: UIViewController,UITextFieldDelegate {
         discountPercent.delegate = self
         
     }
-
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
         let allowedCharacters = CharacterSet.decimalDigits
@@ -44,71 +44,38 @@ class HotelDetailFillUpPage: UIViewController,UITextFieldDelegate {
         
         let newHotel = Hotel(hotelName: hotelName.text!, discountPercent: discountPercent.text!,locationOfTheHotel: location.text!, addressOfTheHotel: address.text!, contactNumber: contactNumber.text!)
         
-        var ArrayOfHotelObjects = [Hotel]()
-        
         let defaults = UserDefaults.standard
         
         if let encodeData = defaults.data(forKey: "HOTEL") as? NSData {
             
-            ArrayOfHotelObjects.append(newHotel)
+            var decode = NSKeyedUnarchiver.unarchiveObject(with: encodeData as Data) as? [Hotel]
             
-            print(ArrayOfHotelObjects)
+            decode?.append(newHotel)
             
-        let encode = NSKeyedArchiver.archivedData(withRootObject: ArrayOfHotelObjects)
-            
-        defaults.set(encode, forKey: "HOTEL")
+            defaults.set(decode, forKey: "HOTEL")
             
             defaults.synchronize()
-    
-        }
-        
-        else{
             
-            let encodedData = NSKeyedArchiver.archivedData(withRootObject: newHotel)
+        }
+            
+        else{
+            var array : [Hotel] = [newHotel]
+            
+            let encodedData = NSKeyedArchiver.archivedData(withRootObject: array)
             
             defaults.set(encodedData, forKey: "HOTEL")
-
+            
             defaults.synchronize()
-
+            
         }
         
-        if let decodedData = UserDefaults.standard.data(forKey: "HOTEL") as? NSData {
-            
-            let decode = NSKeyedUnarchiver.unarchiveObject(with: decodedData as Data)
-            
-        }
-
-//        guard let name = hotelName.text , name != "" else { return }
-//        
-//        let arrayOfhotels = [name]
-//        
-//        let defaults = UserDefaults.standard
-//        
-//        
-//        if var arrayOfhotels = defaults.array(forKey: "hotels") as? [String]  {
-//            
-//            arrayOfhotels.append(name)
-//            
-//            defaults.set(arrayOfhotels, forKey: "hotels")
-//            
-//        }
-//            
-//        else {
-//            
-//            defaults.set(arrayOfhotels, forKey: "hotels")
-//        }
-//        
-//        defaults.synchronize()
-//
-//        print(arrayOfhotels)
-//        
-    }
+            }
     
     @IBAction func backButton(_ sender: Any) {
         
         dismiss(animated: true, completion: nil)
         
     }
-
+    
 }
 
