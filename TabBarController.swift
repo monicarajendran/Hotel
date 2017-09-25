@@ -27,6 +27,8 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tabBarController?.selectedIndex = 2
+        
             self.navigationItem.setHidesBackButton(true, animated: true)
         if loginUser == "moni"  {
             

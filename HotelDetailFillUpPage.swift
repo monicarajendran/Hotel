@@ -14,7 +14,7 @@ class HotelDetailFillUpPage: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var discountPercent: UITextField!
     
-    @IBOutlet weak var ratingOfTheHotel: UIButton!
+    @IBOutlet weak var pickerViewtextField: UITextField!
     
     @IBOutlet weak var location: UITextField!
     
@@ -29,8 +29,14 @@ class HotelDetailFillUpPage: UIViewController,UITextFieldDelegate {
         contactNumber.delegate = self
         discountPercent.delegate = self
         
+        navigationItem.title = "Hotel Details"
+        
     }
 
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
         let allowedCharacters = CharacterSet.decimalDigits
@@ -42,73 +48,44 @@ class HotelDetailFillUpPage: UIViewController,UITextFieldDelegate {
     
     @IBAction func addHotelToTheList(_ sender: Any) {
         
-        let newHotel = Hotel(hotelName: hotelName.text!, discountPercent: discountPercent.text!,locationOfTheHotel: location.text!, addressOfTheHotel: address.text!, contactNumber: contactNumber.text!)
+        guard let hotelName = hotelName.text , let hotelDiscountPercent = discountPercent.text, let hotelLocation = location.text, let hotelAddress = address.text,let hotelContactNumber = contactNumber.text else {return}
         
-        var ArrayOfHotelObjects = [Hotel]()
+        let newHotel = Hotel(hotelName: hotelName, discountPercent: hotelDiscountPercent,locationOfTheHotel: hotelLocation, addressOfTheHotel: hotelAddress, contactNumber: hotelContactNumber)
         
         let defaults = UserDefaults.standard
         
         if let encodeData = defaults.data(forKey: "HOTEL") as? NSData {
             
-            ArrayOfHotelObjects.append(newHotel)
+            var decode = NSKeyedUnarchiver.unarchiveObject(with: encodeData as Data) as? [Hotel]
             
-            print(ArrayOfHotelObjects)
+            decode?.append(newHotel)
             
-        let encode = NSKeyedArchiver.archivedData(withRootObject: ArrayOfHotelObjects)
+            let encode = NSKeyedArchiver.archivedData(withRootObject: decode) as NSData
             
-        defaults.set(encode, forKey: "HOTEL")
+            defaults.set(encode, forKey: "HOTEL")
             
             defaults.synchronize()
-    
-        }
-        
-        else{
             
-            let encodedData = NSKeyedArchiver.archivedData(withRootObject: newHotel)
+        }
+            
+        else{
+            var array : [Hotel] = [newHotel]
+            
+            let encodedData = NSKeyedArchiver.archivedData(withRootObject: array)
             
             defaults.set(encodedData, forKey: "HOTEL")
-
+            
             defaults.synchronize()
-
+            
         }
         
-        if let decodedData = UserDefaults.standard.data(forKey: "HOTEL") as? NSData {
-            
-            let decode = NSKeyedUnarchiver.unarchiveObject(with: decodedData as Data)
-            
-        }
-
-//        guard let name = hotelName.text , name != "" else { return }
-//        
-//        let arrayOfhotels = [name]
-//        
-//        let defaults = UserDefaults.standard
-//        
-//        
-//        if var arrayOfhotels = defaults.array(forKey: "hotels") as? [String]  {
-//            
-//            arrayOfhotels.append(name)
-//            
-//            defaults.set(arrayOfhotels, forKey: "hotels")
-//            
-//        }
-//            
-//        else {
-//            
-//            defaults.set(arrayOfhotels, forKey: "hotels")
-//        }
-//        
-//        defaults.synchronize()
-//
-//        print(arrayOfhotels)
-//        
-    }
+            }
     
     @IBAction func backButton(_ sender: Any) {
         
         dismiss(animated: true, completion: nil)
         
     }
-
+    
 }
 

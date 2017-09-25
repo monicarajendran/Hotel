@@ -20,12 +20,6 @@ class UserLoginPage: UIViewController {
         userEmailid.text = ""
         password.text = ""
         
-//        self.navigationController?.setNavigationBarHidden(false, animated: true)
-//        
-//        self.navigationController?.navigationBar.topItem?.title = "USER LOGIN"
-//        
-//        self.navigationItem.setHidesBackButton(false, animated: false)
-//        
     }
     
     override func viewDidLoad() {
