@@ -24,9 +24,10 @@ class SettingsPageOfAdmin: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       userName.text = UserDefaults.standard.string(forKey: "loggedInUserName")
+        userName.text = UserDefaults.standard.string(forKey: "loggedInUserName")
         
         emailIdOfTheUser.text = UserDefaults.standard.string(forKey: "loggedInUserEmail")
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -281,7 +281,7 @@
             </objects>
             <point key="canvasLocation" x="1958" y="846"/>
         </scene>
-        <!--settings-->
+        <!--Settings-->
         <scene sceneID="n1s-Oc-aeJ">
             <objects>
                 <tableViewController storyboardIdentifier="settings" id="BPS-nr-qaC" customClass="SettingsPageOfAdmin" customModule="Hotel" customModuleProvider="target" sceneMemberID="viewController">
@@ -296,7 +296,7 @@
                                         <rect key="frame" x="0.0" y="35" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LPr-Y0-hcO" id="Ix9-2J-OsU">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enO-jj-Qvu">
@@ -320,7 +320,7 @@
                                         <rect key="frame" x="0.0" y="79" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BEc-Zc-bjB" id="C5e-je-2rr">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5fj-5c-s7M">
@@ -344,7 +344,7 @@
                                         <rect key="frame" x="0.0" y="123" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZOc-UQ-23c" id="E0v-EV-Lnf">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reset Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C72-GU-Xme">
@@ -361,7 +361,7 @@
                                         <rect key="frame" x="0.0" y="167" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uAY-VZ-YJZ" id="l4F-MJ-6oI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cm9-NW-daZ">
@@ -382,7 +382,7 @@
                             <outlet property="delegate" destination="BPS-nr-qaC" id="4Yy-1N-Ka9"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="settings" id="TpO-iI-JyV"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="icons8-Settings-20" id="TpO-iI-JyV"/>
                     <connections>
                         <outlet property="emailIdOfTheUser" destination="5fj-5c-s7M" id="bFb-b7-HaG"/>
                         <outlet property="userName" destination="enO-jj-Qvu" id="ldg-4T-k6B"/>
@@ -471,6 +471,118 @@
             </objects>
             <point key="canvasLocation" x="3685.5999999999999" y="1191.4542728635683"/>
         </scene>
+        <!--Hotel Details-->
+        <scene sceneID="m2k-oW-cUB">
+            <objects>
+                <viewController storyboardIdentifier="HotelDetails" id="Ohb-xh-amh" customClass="HotelDetails" customModule="Hotel" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Avi-SY-P4s"/>
+                        <viewControllerLayoutGuide type="bottom" id="tRv-Fi-YG6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ijG-b5-Es9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ofQ-EI-87N">
+                                <rect key="frame" x="152" y="122" width="197" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wc2-gv-eiH">
+                                <rect key="frame" x="179" y="197" width="156" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSJ-jP-y0u">
+                                <rect key="frame" x="191" y="274" width="144" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TbM-wd-Lde">
+                                <rect key="frame" x="132" y="343" width="217" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuo-ee-lz1">
+                                <rect key="frame" x="132" y="432" width="211" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contact Number :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ynz-NR-gtY">
+                                <rect key="frame" x="39" y="540" width="140" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulK-N6-7BG">
+                                <rect key="frame" x="39" y="443" width="80" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSy-gx-GQa">
+                                <rect key="frame" x="39" y="353" width="108" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hotel Name :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAv-xC-EPB">
+                                <rect key="frame" x="39" y="129" width="174" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rating :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJ2-1Q-kVF">
+                                <rect key="frame" x="39" y="207" width="80" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Discount  Percent :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZVg-Df-IJ4">
+                                <rect key="frame" x="39" y="284" width="140" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yx4-JM-dVf">
+                                <rect key="frame" x="187" y="530" width="156" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="discountpercentOfTheHotel" destination="iSJ-jP-y0u" id="12x-9V-QPV"/>
+                        <outlet property="hotelAddress" destination="uuo-ee-lz1" id="4uH-Xi-Ktm"/>
+                        <outlet property="hotelContactNumber" destination="Yx4-JM-dVf" id="C1w-vY-CIq"/>
+                        <outlet property="hotelLocation" destination="TbM-wd-Lde" id="KXT-kP-loe"/>
+                        <outlet property="hotelStarRating" destination="wc2-gv-eiH" id="iyQ-NL-0aS"/>
+                        <outlet property="nameOfTheHotel" destination="ofQ-EI-87N" id="AtO-Z8-c6k"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Fw-ZX-fNd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4348" y="978.26086956521749"/>
+        </scene>
         <!--Hotels-->
         <scene sceneID="eEs-Em-mSg">
             <objects>
@@ -510,7 +622,7 @@
                             <outlet property="delegate" destination="tYL-J7-hr5" id="dIt-B5-Id9"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Hotels" id="Kn1-YS-42q"/>
+                    <tabBarItem key="tabBarItem" title="Hotels" image="icons8-Hotel Building-20" id="Kn1-YS-42q"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qsD-vO-v0X" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationBar contentMode="scaleToFill" id="P5s-xa-ybL">
@@ -592,23 +704,13 @@
                                     <action selector="backButton:" destination="OP0-bA-TGD" eventType="touchUpInside" id="4dQ-An-OGR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="muM-bt-VIu">
-                                <rect key="frame" x="54" y="209" width="137" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Rating" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zt1-Ks-kCt">
+                                <rect key="frame" x="54" y="210" width="177" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <state key="normal" title=" Rating">
-                                    <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fill Details of the hotel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ghc-Pg-Brz">
-                                <rect key="frame" x="54" y="84" width="282" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.99055805443493572" green="0.99078301911355227" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.98408938878925789" blue="0.99224694996083085" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -620,7 +722,7 @@
                         <outlet property="discountPercent" destination="QNJ-Gt-Hoz" id="iYB-I6-iVl"/>
                         <outlet property="hotelName" destination="uKV-08-Qdq" id="kO5-2R-4wy"/>
                         <outlet property="location" destination="KXz-Is-2fv" id="aZr-AP-BAD"/>
-                        <outlet property="ratingOfTheHotel" destination="muM-bt-VIu" id="pTk-8k-wu1"/>
+                        <outlet property="pickerViewtextField" destination="zt1-Ks-kCt" id="Nxd-Zd-gIu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hNc-2v-0XH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -628,4 +730,8 @@
             <point key="canvasLocation" x="3685.5999999999999" y="492.50374812593708"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-Hotel Building-20" width="20" height="20"/>
+        <image name="icons8-Settings-20" width="20" height="20"/>
+    </resources>
 </document>

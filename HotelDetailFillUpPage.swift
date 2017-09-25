@@ -14,7 +14,7 @@ class HotelDetailFillUpPage: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var discountPercent: UITextField!
     
-    @IBOutlet weak var ratingOfTheHotel: UIButton!
+    @IBOutlet weak var pickerViewtextField: UITextField!
     
     @IBOutlet weak var location: UITextField!
     
@@ -29,6 +29,12 @@ class HotelDetailFillUpPage: UIViewController,UITextFieldDelegate {
         contactNumber.delegate = self
         discountPercent.delegate = self
         
+        navigationItem.title = "Hotel Details"
+        
+    }
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
@@ -42,7 +48,9 @@ class HotelDetailFillUpPage: UIViewController,UITextFieldDelegate {
     
     @IBAction func addHotelToTheList(_ sender: Any) {
         
-        let newHotel = Hotel(hotelName: hotelName.text!, discountPercent: discountPercent.text!,locationOfTheHotel: location.text!, addressOfTheHotel: address.text!, contactNumber: contactNumber.text!)
+        guard let hotelName = hotelName.text , let hotelDiscountPercent = discountPercent.text, let hotelLocation = location.text, let hotelAddress = address.text,let hotelContactNumber = contactNumber.text else {return}
+        
+        let newHotel = Hotel(hotelName: hotelName, discountPercent: hotelDiscountPercent,locationOfTheHotel: hotelLocation, addressOfTheHotel: hotelAddress, contactNumber: hotelContactNumber)
         
         let defaults = UserDefaults.standard
         
@@ -52,7 +60,9 @@ class HotelDetailFillUpPage: UIViewController,UITextFieldDelegate {
             
             decode?.append(newHotel)
             
-            defaults.set(decode, forKey: "HOTEL")
+            let encode = NSKeyedArchiver.archivedData(withRootObject: decode) as NSData
+            
+            defaults.set(encode, forKey: "HOTEL")
             
             defaults.synchronize()
             
